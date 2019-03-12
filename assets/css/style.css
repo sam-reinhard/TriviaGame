@@ -7,7 +7,7 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
     position: fixed;
-    font-family: 'Anton', sans-serif;
+    font-family: 'Rubik', sans-serif;
 }
 
 h1 {
@@ -16,12 +16,12 @@ h1 {
 }
 
 .container {
-   width: 55%;
+   width: 65%;
    margin: 20px auto;
    opacity: 50%;
    overflow: auto;
    height: 90%;
-   border: 3px double rgb(252, 226, 140);
+   border: 4px double rgb(252, 226, 140);
    border-radius: 5px;
    background-color: rgba(195, 227, 255, 0.774)
 }
@@ -44,7 +44,7 @@ button {
     border-radius: 5px;
     margin-bottom: 20px;
     font-size: 16px;
-    font-family: 'Anton', sans-serif;
+    font-family: 'Rubik', sans-serif;
 }
 
 #instructions {

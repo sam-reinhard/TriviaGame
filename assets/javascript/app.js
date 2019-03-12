@@ -1,15 +1,12 @@
 // Things to do
-//      Add javascript that tracks whether you get a question right or wrong
-//      Add a reset button
 //      Finish styling the page with images and css
 //      Clean up code
-//          maybe write a function that is used if time = 0 or if the user clicks submit
 //          Is there a way to write out all of the quiz questions and radio button answers through a for loop or for each loop?
 
 $(document).ready(function () {
 
     var intervalId;
-    var time = 181;
+    var time = 301;
     var right = 0;
     var wrong = 0;
     var unanswered = 0;
@@ -79,9 +76,9 @@ $(document).ready(function () {
     ];
 
     //                              Start Button appears and instructions for when it's clicked
-    $("#start").append("<button>Start</button>");
+    $("#start").append("<button>Start</button>" + "<br><br><br><br>");
 
-    $("#instructions").text("Click 'Start' to test your knowledge of the US National Park System! You'll only have three minutes to complete the quiz, so don't waste time!");
+    $("#instructions").text("Click 'Start' to test your knowledge of the US National Park System! If you aren't sure about an answer, go with your best guess. You'll only have three minutes to complete the quiz so don't waste time!");
 
     $("#start").on("click", startQuiz);
 
@@ -99,21 +96,8 @@ $(document).ready(function () {
         var formattedTime = timeConverter(time);
         $("#timer").text("Time remaining: " + formattedTime);
         if (time === 0){
-            stop();
             alert('Out of time! Click "Okay" to see your final score.')
-            gradeQuiz();
-            $(".question").hide();
-            $(".answer").empty();
-            $("#timer").hide();
-            $("#submit").empty();
-            $("#score").text('You got ' + right + ' questions right and ' + wrong + ' questions wrong.')
-            if (right >= 7){
-                $("#score").append(" Nice job! Now get off the internet and go visit one of our amazing National Parks!")
-            } else if (right <= 3){
-                $("#score").append(" You can do better than that! Want to try again?")
-            } else {
-                $("#score").append(" Not bad! You'll be an expert on our National Parks soon enough!")
-            }
+            seeResults(); 
         }   
     };
 
@@ -122,7 +106,6 @@ $(document).ready(function () {
     }
 
     function startTimer(){
-        console.log("Clock's ticking!")
         intervalId = setInterval(count, 1000);
         count();
     };
@@ -230,7 +213,7 @@ $(document).ready(function () {
         $("#submit").append("<button>Submit</button>");
     }
 
-    // on click function for submit --> 
+    // on click function for submit and time running out
 
     function gradeQuiz(){
         var userAnswers  = $("input:checked");
@@ -238,18 +221,14 @@ $(document).ready(function () {
         for (var q=0; q<quiz.length; q++){
             if (quiz[q].correct === userAnswers[q].dataset.value){
                 right++;
-                console.log(right);
             } else {
                 wrong++;
-                console.log(wrong);
             }    
-            
-
     }}
 
     function seeResults(){
-        stop();
         gradeQuiz();
+        stop();
         $(".question").hide();
         $(".answer").empty();
         $("#timer").hide();
@@ -257,30 +236,13 @@ $(document).ready(function () {
         $("#score").text('You got ' + right + ' questions right and ' + wrong + ' questions wrong.')
         $("#score").append('<br><br>')
         if (right >= 7){
-            $("#score").append(" Nice job! Now get off the internet and go visit one of our amazing National Parks!")
+            $("#score").append("Nice job! Now get off the internet and go visit one of our amazing National Parks!")
         } else if (right <= 3){
-            $("#score").append(" You can do better than that! Want to try again?")
+            $("#score").append("Woodrow Wilson would be so disappointed if he saw those results...")
         } else {
-            $("#score").append(" Not bad! You'll be an expert on our National Parks soon enough!")
+            $("#score").append("Not bad! You'll be an expert on our National Parks soon enough!")
         }
     }
 
     $("#submit").on("click", seeResults)
-
-        // stop();
-        // gradeQuiz();
-        // $(".question").hide();
-        // $(".answer").empty();
-        // $("#timer").hide();
-        // $("#submit").empty();
-        // $("#score").text('You got ' + right + ' questions right and ' + wrong + ' questions wrong.')
-        // $("#score").append('<br><br>')
-        // if (right >= 7){
-        //     $("#score").append(" Nice job! Now get off the internet and go visit one of our amazing National Parks!")
-        // } else if (right <= 3){
-        //     $("#score").append(" You can do better than that! Want to try again?")
-        // } else {
-        //     $("#score").append(" Not bad! You'll be an expert on our National Parks soon enough!")
-        // }
-    // });
 })
