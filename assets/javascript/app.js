@@ -1,7 +1,8 @@
-// Things to do
-//      Finish styling the page with images and css
-//      Clean up code
-//          Is there a way to write out all of the quiz questions and radio button answers through a for loop or for each loop?
+// Note: A bug occurs if the timer runs out or the user clicks submit and all the answer choices aren't filled out.
+//       I have tried various approaches to fixing this (adding classes to the answers that the user picks, writing if
+//       statements that use those classes and looks for the corresponding question number; writing if statements if 
+//       the user answer is undefined) but none have worked. Would be very interested in receiving more guidance on this
+//       during office hours.
 
 $(document).ready(function () {
 
