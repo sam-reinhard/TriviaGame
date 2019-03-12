@@ -12,6 +12,7 @@ $(document).ready(function () {
     var time = 181;
     var right = 0;
     var wrong = 0;
+    var unanswered = 0;
 
 
     // Array of quiz questions and answers
@@ -77,7 +78,7 @@ $(document).ready(function () {
         },
     ];
 
-    // Start Button appears and instructions for when it's clicked
+    //                              Start Button appears and instructions for when it's clicked
     $("#start").append("<button>Start</button>");
 
     $("#instructions").text("Click 'Start' to test your knowledge of the US National Park System! You'll only have three minutes to complete the quiz, so don't waste time!");
@@ -97,10 +98,11 @@ $(document).ready(function () {
         time--;
         var formattedTime = timeConverter(time);
         $("#timer").text("Time remaining: " + formattedTime);
-        if (time === -1){
+        if (time === 0){
             stop();
             alert('Out of time! Click "Okay" to see your final score.')
-            $(".question").empty();
+            gradeQuiz();
+            $(".question").hide();
             $(".answer").empty();
             $("#timer").hide();
             $("#submit").empty();
@@ -155,74 +157,74 @@ $(document).ready(function () {
 
         $("#q2").append(quiz[1].q + "<br>")
         for (i=0; i < quiz[1].a.length; i++) {
-            var ansButton = $('<input type="radio" name="radiobtn" >' + (quiz[1].a[i] + '</input>'));
-            ansButton.addClass("answer");
-            ansButton.attr("data-value", quiz[1].a[i]);
-            $("#a2").append(ansButton); 
+            var ansButton1 = $('<input type="radio" name="radiobtn1" >' + (quiz[1].a[i] + '</input>'));
+            ansButton1.addClass("answer");
+            ansButton1.attr("data-value", quiz[1].a[i]);
+            $("#a2").append(ansButton1); 
         }
 
         $("#q3").append(quiz[2].q + "<br>")
         for (i=0; i < quiz[2].a.length; i++) {
-            var ansButton = $('<input type="radio" name="radiobtn" >' + (quiz[2].a[i] + '</input>'));
-            ansButton.addClass("answer");
-            ansButton.attr("data-value", quiz[2].a[i]);
-            $("#a3").append(ansButton); 
+            var ansButton2 = $('<input type="radio" name="radiobtn2" >' + (quiz[2].a[i] + '</input>'));
+            ansButton2.addClass("answer");
+            ansButton2.attr("data-value", quiz[2].a[i]);
+            $("#a3").append(ansButton2); 
         }
 
         $("#q4").append(quiz[3].q + "<br>")
         for (i=0; i < quiz[3].a.length; i++) {
-            var ansButton = $('<input type="radio" name="radiobtn" >' + (quiz[3].a[i] + '</input>'));
-            ansButton.addClass("answer");
-            ansButton.attr("data-value", quiz[3].a[i]);
-            $("#a4").append(ansButton); 
+            var ansButton3 = $('<input type="radio" name="radiobtn3" >' + (quiz[3].a[i] + '</input>'));
+            ansButton3.addClass("answer");
+            ansButton3.attr("data-value", quiz[3].a[i]);
+            $("#a4").append(ansButton3); 
         }
 
         $("#q5").append(quiz[4].q + "<br>")
         for (i=0; i < quiz[4].a.length; i++) {
-            var ansButton = $('<input type="radio" name="radiobtn" >' + (quiz[4].a[i] + '</input>'));
-            ansButton.addClass("answer");
-            ansButton.attr("data-value", quiz[4].a[i]);
-            $("#a5").append(ansButton); 
+            var ansButton4 = $('<input type="radio" name="radiobtn4" >' + (quiz[4].a[i] + '</input>'));
+            ansButton4.addClass("answer");
+            ansButton4.attr("data-value", quiz[4].a[i]);
+            $("#a5").append(ansButton4); 
         }
 
         $("#q6").append(quiz[5].q + "<br>")
         for (i=0; i < quiz[5].a.length; i++) {
-            var ansButton = $('<input type="radio" name="radiobtn" >' + (quiz[5].a[i] + '</input>'));
-            ansButton.addClass("answer");
-            ansButton.attr("data-value", quiz[5].a[i]);
-            $("#a6").append(ansButton); 
+            var ansButton5 = $('<input type="radio" name="radiobtn5" >' + (quiz[5].a[i] + '</input>'));
+            ansButton5.addClass("answer");
+            ansButton5.attr("data-value", quiz[5].a[i]);
+            $("#a6").append(ansButton5); 
         }
 
         $("#q7").append(quiz[6].q + "<br>")
         for (i=0; i < quiz[6].a.length; i++) {
-            var ansButton = $('<input type="radio" name="radiobtn" >' + (quiz[6].a[i] + '</input>'));
-            ansButton.addClass("answer");
-            ansButton.attr("data-value", quiz[6].a[i]);
-            $("#a7").append(ansButton); 
+            var ansButton6 = $('<input type="radio" name="radiobtn6" >' + (quiz[6].a[i] + '</input>'));
+            ansButton6.addClass("answer");
+            ansButton6.attr("data-value", quiz[6].a[i]);
+            $("#a7").append(ansButton6); 
         }
 
         $("#q8").append(quiz[7].q + "<br>")
         for (i=0; i < quiz[7].a.length; i++) {
-            var ansButton = $('<input type="radio" name="radiobtn" >' + (quiz[7].a[i] + '</input>'));
-            ansButton.addClass("answer");
-            ansButton.attr("data-value", quiz[7].a[i]);
-            $("#a8").append(ansButton); 
+            var ansButton7 = $('<input type="radio" name="radiobtn7" >' + (quiz[7].a[i] + '</input>'));
+            ansButton7.addClass("answer");
+            ansButton7.attr("data-value", quiz[7].a[i]);
+            $("#a8").append(ansButton7); 
         }
 
         $("#q9").append(quiz[8].q + "<br>")
         for (i=0; i < quiz[8].a.length; i++) {
-            var ansButton = $('<input type="radio" name="radiobtn" >' + (quiz[8].a[i] + '</input>'));
-            ansButton.addClass("answer");
-            ansButton.attr("data-value", quiz[8].a[i]);
-            $("#a9").append(ansButton); 
+            var ansButton8 = $('<input type="radio" name="radiobtn8" >' + (quiz[8].a[i] + '</input>'));
+            ansButton8.addClass("answer");
+            ansButton8.attr("data-value", quiz[8].a[i]);
+            $("#a9").append(ansButton8); 
         }
 
         $("#q10").append(quiz[9].q + "<br>")
         for (i=0; i < quiz[9].a.length; i++) {
-            var ansButton = $('<input type="radio" name="radiobtn" >' + (quiz[9].a[i] + '</input>'));
-            ansButton.addClass("answer");
-            ansButton.attr("data-value", quiz[9].a[i]);
-            $("#a10").append(ansButton); 
+            var ansButton9 = $('<input type="radio" name="radiobtn9" >' + (quiz[9].a[i] + '</input>'));
+            ansButton9.addClass("answer");
+            ansButton9.attr("data-value", quiz[9].a[i]);
+            $("#a10").append(ansButton9); 
         }
 
         $("#submit").append("<button>Submit</button>");
@@ -231,22 +233,27 @@ $(document).ready(function () {
     // on click function for submit --> 
 
     function gradeQuiz(){
+        var userAnswers  = $("input:checked");
+        console.log(userAnswers);
         for (var q=0; q<quiz.length; q++){
-            if (quiz[q].correct === 'The button that they clicked'){
+            if (quiz[q].correct === userAnswers[q].dataset.value){
                 right++;
+                console.log(right);
             } else {
                 wrong++;
-            }
+                console.log(wrong);
+            }    
+            
 
     }}
 
-    $("#submit").on("click", function(){
+    function seeResults(){
         stop();
-        $(".question").empty();
+        gradeQuiz();
+        $(".question").hide();
         $(".answer").empty();
         $("#timer").hide();
         $("#submit").empty();
-        gradeQuiz();
         $("#score").text('You got ' + right + ' questions right and ' + wrong + ' questions wrong.')
         $("#score").append('<br><br>')
         if (right >= 7){
@@ -256,5 +263,24 @@ $(document).ready(function () {
         } else {
             $("#score").append(" Not bad! You'll be an expert on our National Parks soon enough!")
         }
-    });
+    }
+
+    $("#submit").on("click", seeResults)
+
+        // stop();
+        // gradeQuiz();
+        // $(".question").hide();
+        // $(".answer").empty();
+        // $("#timer").hide();
+        // $("#submit").empty();
+        // $("#score").text('You got ' + right + ' questions right and ' + wrong + ' questions wrong.')
+        // $("#score").append('<br><br>')
+        // if (right >= 7){
+        //     $("#score").append(" Nice job! Now get off the internet and go visit one of our amazing National Parks!")
+        // } else if (right <= 3){
+        //     $("#score").append(" You can do better than that! Want to try again?")
+        // } else {
+        //     $("#score").append(" Not bad! You'll be an expert on our National Parks soon enough!")
+        // }
+    // });
 })
