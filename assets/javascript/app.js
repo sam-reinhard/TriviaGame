@@ -10,6 +10,7 @@ $(document).ready(function () {
     var right = 0;
     var wrong = 0;
     var unanswered = 0;
+    var logo = "assets/images/nationalParkLogo.png";
 
 
     // Array of quiz questions and answers
@@ -78,7 +79,7 @@ $(document).ready(function () {
     //                              Start Button appears and instructions for when it's clicked
     $("#start").append("<button>Start</button>" + "<br><br><br><br>");
 
-    $("#instructions").text("Click 'Start' to test your knowledge of the US National Park System! If you aren't sure about an answer, go with your best guess. You'll only have three minutes to complete the quiz so don't waste time!");
+    $("#instructions").text("Click 'Start' to test your knowledge of the US National Park System! If you aren't sure about an answer, go with your best guess. You'll only have five minutes to complete the quiz so don't waste time!");
 
     $("#start").on("click", startQuiz);
 
@@ -230,18 +231,20 @@ $(document).ready(function () {
         gradeQuiz();
         stop();
         $(".question").hide();
-        $(".answer").empty();
+        $(".answer").hide();
         $("#timer").hide();
         $("#submit").empty();
         $("#score").text('You got ' + right + ' questions right and ' + wrong + ' questions wrong.')
         $("#score").append('<br><br>')
-        if (right >= 7){
+        if (right >= 8){
             $("#score").append("Nice job! Now get off the internet and go visit one of our amazing National Parks!")
-        } else if (right <= 3){
+        } else if (right <= 4){
             $("#score").append("Woodrow Wilson would be so disappointed if he saw those results...")
         } else {
             $("#score").append("Not bad! You'll be an expert on our National Parks soon enough!")
         }
+        $("#score").append('<br><br>')
+        $("#endImage").html("<img src=" + logo + ">");
     }
 
     $("#submit").on("click", seeResults)
